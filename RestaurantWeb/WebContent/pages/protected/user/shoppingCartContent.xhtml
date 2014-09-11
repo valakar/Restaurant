@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+	<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h3>#{msgs.loginHello}: #{userMB.user.firstname} #{userMB.user.lastname} || <h:commandLink action="#{userMB.logOut()}" value="#{msgs.logout}" /> </h3>
+		
+		<h:messages />
+		<h:dataTable value="#{shoppingCartMB.cart}" var="item"
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishTitle}
+				</f:facet>
+				#{item.key}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderAmount}
+				</f:facet>
+				#{item.value}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.delete}
+				</f:facet>
+				<h:commandButton action="#{shoppingCartMB.delDish()}" value="#{msgs.delete}">
+					<f:setPropertyActionListener target="#{shoppingCartMB.dish}" value="#{item.key}">
+					</f:setPropertyActionListener>
+				</h:commandButton>
+				
+			</h:column>
+		</h:dataTable>
+		<h:commandButton action="#{shoppingCartMB.createOrderStart()}" value="#{msgs.checkout}">
+		</h:commandButton>
+
+
+	</h:form>
+	</ui:composition>
+</h:body>  
+</html>

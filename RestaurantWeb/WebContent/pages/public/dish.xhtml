@@ -1,0 +1,77 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<!-- Highlights Wrapper -->
+		<div class="wrapper wrapper-style3">
+			<div class="title">#{dishBean.dish.title}</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Highlights -->
+						<div id="highlights">
+							<div>
+
+
+								<h:form>
+									<h:messages />
+									
+										
+									<h:inputHidden value="#{dishBean.dish.id}" />
+<!-- 									<h:panelGrid columns="2" > -->
+										<p:graphicImage value="#{dishImageBean.image}" style="float:left; margin-right: 10px; margin-bottom: 10px;">
+											<f:param name="id" value="#{dishBean.dish.id}" />
+										</p:graphicImage>
+										
+										<h:outputLabel for="dishSize" value="#{msgs.dishSize}: #{dishBean.dish.size}" />
+<!-- 										<h:outputText id="dishSize" value="#{msgs.dishSize} #{dishBean.dish.size}" /> -->
+										
+										<h:outputLabel for="dishPrice" value="#{msgs.dishPrice}: #{dishBean.dish.price}" />
+<!-- 										<h:inputTextarea id="dishPrice" value="#{dishBean.dish.price}" /> -->
+										
+										<h:outputLabel for="dishIngredients"
+											value="#{msgs.dishIngredients}: #{dishBean.allIngredientsForDish}" />
+
+										<h:outputLabel for="dishTypes" value="#{msgs.dishTypes}: #{dishBean.allDishTypesForDish}" />
+										
+										<h:outputText id="dishDesc"
+											value="#{dishBean.dish.description}" />
+
+										<p:growl id="messages" showDetail="true" life="5000" />
+<!-- 									</h:panelGrid> -->
+									<h:panelGrid columns="2">
+										<h:form>
+											<h:commandButton rendered="#{request.isUserInRole('user')}" action="#{shoppingCartMB.addDish()}" value="Buy" styleClass="button button-style1">
+												<f:setPropertyActionListener target="#{shoppingCartMB.dish}" value="#{dishBean.dish}"></f:setPropertyActionListener>
+												<f:setPropertyActionListener target="#{shoppingCartMB.user}" value="#{authBean.user}"></f:setPropertyActionListener>
+											</h:commandButton>
+											<h:commandButton rendered="#{not request.isUserInRole('admin')}" action="#{dishBean.listAllTypes()}"
+												value="#{msgs.cancel}" immediate="true" styleClass="button button-style1"/>
+											<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.updateDishStart()}"
+											value="#{msgs.update}" styleClass="button button-style1"/>
+											<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.listAll()}"
+												value="#{msgs.cancel}" immediate="true" styleClass="button button-style1"/>
+											<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.deleteDishStart()}" 
+												value="#{msgs.delete}" immediate="true" styleClass="button button-style1"/>
+										</h:form>
+										
+										
+										
+									</h:panelGrid>
+								</h:form>
+
+
+							</div>
+						</div>
+						<!-- /Highlights -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Highlights Wrapper -->
+	</ui:define>
+</ui:composition>

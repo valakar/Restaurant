@@ -1,0 +1,60 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+	
+	<!-- Intro Wrapper -->
+			<div id="intro-wrapper" class="wrapper wrapper-style3">
+				<div class="title">checkout</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							
+							<!-- Highlights -->
+								<div id="highlights">
+
+							<h:form enctype="multipart/form-data">
+								<h:messages />
+
+								<h:panelGrid columns="2" styleClass="panelGrid"
+									rowClasses="panelFirstLine, panelNextLine">
+
+									<h:outputLabel for="orderSummary" value="#{msgs.orderSummary}" />
+									<h:outputText id="orderSummary"
+										value="#{shoppingCartMB.order.summary}" />
+
+									<h:outputLabel for="orderPlace" value="#{msgs.orderPlace}" />
+							        <p:selectOneMenu value="#{shoppingCartMB.order.place}" style="width:70px">  
+							        	<f:selectItems value="#{helpMB.places}"/>
+							        </p:selectOneMenu> 
+
+									<h:outputLabel for="orderTime" value="#{msgs.orderTime}" />
+									<p:calendar id="orderTime" value="#{shoppingCartMB.order.time}"
+										pattern="MM/dd/yyyy HH:mm" />
+
+									<h:outputLabel for="orderComment" value="#{msgs.orderComment}" />
+									<h:inputTextarea id="orderComment"
+										value="#{shoppingCartMB.order.comment}" />
+
+								</h:panelGrid>
+								<h:panelGrid columns="2">
+									<h:commandButton action="#{shoppingCartMB.checkout()}"
+										value="#{msgs.checkout}" styleClass="button button-style3"/>
+									<!-- 			<h:commandButton action="#{dishBean.listAllDishs()}" -->
+									<!-- 				value="#{msgs.cancel}" immediate="true" /> -->
+								</h:panelGrid>
+							</h:form>
+						</div>
+							<!-- /Highlights -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Intro Wrapper -->
+	
+	</ui:define>
+</ui:composition>

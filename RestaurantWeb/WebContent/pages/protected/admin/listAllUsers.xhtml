@@ -1,0 +1,76 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<!-- Intro Wrapper -->
+		<div class="wrapper wrapper-style1">
+			<div class="title">#{msgs.userListHeader}</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Highlights -->
+						<div id="intro">
+
+							<h:form> 
+
+								<h:messages />
+
+
+								<p:dataTable id="dataTable" var="user"
+									value="#{userBean.allUsers}" paginator="true" rows="10"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15">
+
+
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.userEmail}" />
+										</f:facet>
+										<h:outputText value="#{user.email}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.userFirstname}" />
+										</f:facet>
+										<h:outputText value="#{user.firstname}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.userLastname}" />
+										</f:facet>
+										<h:outputText value="#{user.lastname}" />
+									</p:column>
+									<p:column>
+										<h:panelGrid columns="2">
+
+											<h:commandButton action="#{userBean.updateUserStart()}"
+												value="#{msgs.update}" styleClass="btn btn-default">
+												<f:setPropertyActionListener target="#{userBean.user}"
+													value="#{user}"></f:setPropertyActionListener>
+											</h:commandButton>
+
+											<h:commandButton action="#{userBean.deleteUserStart()}"
+												value="#{msgs.delete}" styleClass="btn btn-default">
+												<f:setPropertyActionListener target="#{userBean.user}"
+													value="#{user}"></f:setPropertyActionListener>
+											</h:commandButton>
+
+											<h:inputHidden value="#{user.id}" />
+										</h:panelGrid>
+									</p:column>
+								</p:dataTable>
+							</h:form>
+
+						</div>
+						<!-- /Highlights -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Highlights Wrapper -->
+	</ui:define>
+</ui:composition>

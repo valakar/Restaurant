@@ -1,0 +1,89 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<!-- Intro Wrapper -->
+		<div class="wrapper wrapper-style1">
+			<div class="title">#{msgs.userListHeader}</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Highlights -->
+						<div id="intro">
+
+							<h:form> 
+
+								<h:messages />
+
+
+								<p:dataTable id="dataTable" var="order"
+									value="#{orderBean.allOrders}" paginator="true" rows="10"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15">
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.orderId}" />
+										</f:facet>
+										<h:outputText value="#{order.id}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.orderTime}" />
+										</f:facet>
+										<h:outputText value="#{order.time}"  >
+											<f:convertDateTime pattern="MM/dd/yyyy HH:mm" /> 
+										</h:outputText>
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.orderOrdertime}" />
+										</f:facet>
+										<h:outputText value="#{order.ordertime}"  >
+											<f:convertDateTime pattern="MM/dd/yyyy HH:mm" /> 
+										</h:outputText>
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.orderSummary}" />
+										</f:facet>
+										<h:outputText value="#{order.summary}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.userLastname}" />
+											<h:outputText value="#{msgs.userFirstname}" />
+										</f:facet>
+										<h:outputText value="#{order.user.lastname}" />
+										<h:outputText value="#{order.user.firstname}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.status}" />
+										</f:facet>
+										<h:outputText value="#{helpMB.status(order.status)}" />
+									</p:column>
+									
+									<p:column>
+											<h:commandButton action="#{orderBean.updateOrderStart()}"
+												value="#{msgs.update}" styleClass="btn btn-default">
+												<f:setPropertyActionListener target="#{orderBean.order}"
+													value="#{order}"></f:setPropertyActionListener>
+											</h:commandButton>
+
+									</p:column>
+								</p:dataTable>
+							</h:form>
+
+						</div>
+						<!-- /Highlights -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Highlights Wrapper -->
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllUsers::#pages#protected#admin#listAllUsers.xhtml"
+    NAME="output" PATH="/pages/protected/admin/listAllUsers.xhtml"
+    TARGET="rules:#pages#protected#admin#listAllUsers.xhtml"
+    TITLE="listAllUsers" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="createUser::#pages#public#createUser.xhtml"
+    NAME="output" PATH="/pages/public/createUser.xhtml"
+    TARGET="rules:#pages#public#createUser.xhtml" TITLE="createUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="updateUser::#pages#public#updateUser.xhtml"
+    NAME="output" PATH="/pages/public/updateUser.xhtml"
+    TARGET="rules:#pages#public#updateUser.xhtml" TITLE="updateUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::3" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::3" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deleteUser::#pages#protected#admin#deleteUser.xhtml"
+    NAME="output" PATH="/pages/protected/admin/deleteUser.xhtml"
+    TARGET="rules:#pages#protected#admin#deleteUser.xhtml"
+    TITLE="deleteUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::4" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::4" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllIngredients::#pages#public#listAllIngredients.xhtml"
+    NAME="output" PATH="/pages/public/listAllIngredients.xhtml"
+    TARGET="rules:#pages#public#listAllIngredients.xhtml"
+    TITLE="listAllIngredients" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::5" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::5" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="createIngredient::#pages#protected#admin#createIngredientContent.xhtml"
+    NAME="output"
+    PATH="/pages/protected/admin/createIngredientContent.xhtml"
+    TARGET="rules:#pages#protected#admin#createIngredientContent.xhtml"
+    TITLE="createIngredient" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::6" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::6" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="updateIngredient::#pages#protected#admin#updateIngredient.xhtml"
+    NAME="output" PATH="/pages/protected/admin/updateIngredient.xhtml"
+    TARGET="rules:#pages#protected#admin#updateIngredient.xhtml"
+    TITLE="updateIngredient" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::7" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::7" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deleteIngredient::#pages#protected#admin#deleteIngredient.xhtml"
+    NAME="output" PATH="/pages/protected/admin/deleteIngredient.xhtml"
+    TARGET="rules:#pages#protected#admin#deleteIngredient.xhtml"
+    TITLE="deleteIngredient" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::8" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::8" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllDishTypes::#pages#public#listAllDishTypes.xhtml"
+    NAME="output" PATH="/pages/public/listAllDishTypes.xhtml"
+    TARGET="rules:#pages#public#listAllDishTypes.xhtml"
+    TITLE="listAllDishTypes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::9" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::9" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="createDishType::#pages#protected#admin#createDishType.xhtml"
+    NAME="output" PATH="/pages/protected/admin/createDishType.xhtml"
+    TARGET="rules:#pages#protected#admin#createDishType.xhtml"
+    TITLE="createDishType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::10" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::10" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="updateDishType::#pages#protected#admin#updateDishType.xhtml"
+    NAME="output" PATH="/pages/protected/admin/updateDishType.xhtml"
+    TARGET="rules:#pages#protected#admin#updateDishType.xhtml"
+    TITLE="updateDishType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::11" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::11" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deleteDishType::#pages#protected#admin#deleteDishType.xhtml"
+    NAME="output" PATH="/pages/protected/admin/deleteDishType.xhtml"
+    TARGET="rules:#pages#protected#admin#deleteDishType.xhtml"
+    TITLE="deleteDishType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::12" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::12" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllDishs::#pages#public#listAllDishs.xhtml" NAME="output"
+    PATH="/pages/public/listAllDishs.xhtml"
+    TARGET="rules:#pages#public#listAllDishs.xhtml" TITLE="listAllDishs" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::13" SHAPE="32,1585,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::13" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="createDish::#pages#protected#admin#createDish.xhtml"
+    NAME="output" PATH="/pages/protected/admin/createDish.xhtml"
+    TARGET="rules:#pages#protected#admin#createDish.xhtml"
+    TITLE="createDish" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::14" SHAPE="32,1697,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::14" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="updateDish::#pages#protected#admin#updateDish.xhtml"
+    NAME="output" PATH="/pages/protected/admin/updateDish.xhtml"
+    TARGET="rules:#pages#protected#admin#updateDish.xhtml"
+    TITLE="updateDish" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::15" SHAPE="32,1809,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::15" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deleteDish::#pages#protected#admin#deleteDish.xhtml"
+    NAME="output" PATH="/pages/protected/admin/deleteDish.xhtml"
+    TARGET="rules:#pages#protected#admin#deleteDish.xhtml"
+    TITLE="deleteDish" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::16" SHAPE="32,1473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::16" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#pages#public#index.xhtml"
+    NAME="output" PATH="/pages/public/index.xhtml"
+    TARGET="rules:#pages#public#index.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::17" SHAPE="32,1921,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::17" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="shoppingCart::#pages#protected#user#shoppingCart.xhtml"
+    NAME="output" PATH="/pages/protected/user/shoppingCart.xhtml"
+    TARGET="rules:#pages#protected#user#shoppingCart.xhtml"
+    TITLE="shoppingCart" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="shoppingCart::#pages#protected#user#shoppingCartEmpty.xhtml"
+    NAME="output1" PATH="/pages/protected/user/shoppingCartEmpty.xhtml"
+    TARGET="rules:#pages#protected#user#shoppingCartEmpty.xhtml"
+    TITLE="shoppingCart" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::18" SHAPE="32,2033,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::18" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="createOrder::#pages#protected#user#createOrder.xhtml"
+    NAME="output" PATH="/pages/protected/user/createOrder.xhtml"
+    TARGET="rules:#pages#protected#user#createOrder.xhtml"
+    TITLE="createOrder" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::19" SHAPE="32,2145,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::19" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllOrders::#pages#protected#user#listAllOrders.xhtml"
+    NAME="output" PATH="/pages/protected/user/listAllOrders.xhtml"
+    TARGET="rules:#pages#protected#user#listAllOrders.xhtml"
+    TITLE="listAllOrders" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#admin#createIngredientContent.xhtml"
+  PATH="/pages/protected/admin/createIngredientContent.xhtml"
+  SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#updateDish.xhtml"
+  PATH="/pages/protected/admin/updateDish.xhtml" SHAPE="240,1713,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#admin#updateIngredient.xhtml"
+  PATH="/pages/protected/admin/updateIngredient.xhtml"
+  SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#user#createOrder.xhtml"
+  PATH="/pages/protected/user/createOrder.xhtml" SHAPE="240,2049,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#deleteDishType.xhtml"
+  PATH="/pages/protected/admin/deleteDishType.xhtml"
+  SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#user#listAllOrders.xhtml"
+  PATH="/pages/protected/user/listAllOrders.xhtml" SHAPE="240,2161,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#createDish.xhtml"
+  PATH="/pages/protected/admin/createDish.xhtml" SHAPE="240,1601,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#listAllDishs.xhtml"
+  PATH="/pages/public/listAllDishs.xhtml" SHAPE="256,1377,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#listAllUsers.xhtml"
+  PATH="/pages/protected/admin/listAllUsers.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#createUser.xhtml"
+  PATH="/pages/public/createUser.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#createDishType.xhtml"
+  PATH="/pages/protected/admin/createDishType.xhtml"
+  SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#deleteDish.xhtml"
+  PATH="/pages/protected/admin/deleteDish.xhtml" SHAPE="240,1825,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#listAllDishTypes.xhtml"
+  PATH="/pages/public/listAllDishTypes.xhtml" SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#listAllIngredients.xhtml"
+  PATH="/pages/public/listAllIngredients.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#admin#deleteIngredient.xhtml"
+  PATH="/pages/protected/admin/deleteIngredient.xhtml"
+  SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#updateUser.xhtml"
+  PATH="/pages/public/updateUser.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#deleteUser.xhtml"
+  PATH="/pages/protected/admin/deleteUser.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#updateDishType.xhtml"
+  PATH="/pages/protected/admin/updateDishType.xhtml"
+  SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::20" SHAPE="32,2257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::20" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listAllOrdersForALL::#pages#protected#admin#listAllOrders.xhtml"
+    NAME="output" PATH="/pages/protected/admin/listAllOrders.xhtml"
+    TARGET="rules:#pages#protected#admin#listAllOrders.xhtml"
+    TITLE="listAllOrdersForALL" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#public#index.xhtml"
+  PATH="/pages/public/index.xhtml" SHAPE="240,2273,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::21" SHAPE="32,2369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::21" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#pages#public#login.xhtml"
+    NAME="output" PATH="/pages/public/login.xhtml"
+    TARGET="rules:#pages#public#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::22" SHAPE="32,2705,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::22" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="main::#pages#public#main.xhtml"
+    NAME="output" PATH="/pages/public/main.xhtml"
+    TARGET="rules:#pages#public#main.xhtml" TITLE="main" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#protected#user#shoppingCart.xhtml"
+  PATH="/pages/protected/user/shoppingCart.xhtml" SHAPE="240,2497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#main.xhtml"
+  PATH="/pages/public/main.xhtml" SHAPE="240,2833,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::23" SHAPE="32,2817,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::23" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#pages#public#index.xhtml"
+    NAME="output" PATH="/pages/public/index.xhtml"
+    TARGET="rules:#pages#public#index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#protected#admin#listAllOrders.xhtml"
+  PATH="/pages/protected/admin/listAllOrders.xhtml" SHAPE="240,2609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::24" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::24" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="menu::#pages#public#menuType.xhtml"
+    NAME="output" PATH="/pages/public/menuType.xhtml"
+    TARGET="rules:#pages#public#menuType.xhtml" TITLE="menu" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::25" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::25" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="menuDish::#pages#public#menuDish.xhtml"
+    NAME="output" PATH="/pages/public/menuDish.xhtml"
+    TARGET="rules:#pages#public#menuDish.xhtml" TITLE="menuDish" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::26" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::26" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="openDish::#pages#public#dish.xhtml"
+    NAME="output" PATH="/pages/public/dish.xhtml"
+    TARGET="rules:#pages#public#dish.xhtml" TITLE="openDish" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::27" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::27" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="news::#pages#public#news.xhtml"
+    NAME="output" PATH="/pages/public/news.xhtml"
+    TARGET="rules:#pages#public#news.xhtml" TITLE="news" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::28" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::28" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="done::#pages#protected#user#done.xhtml"
+    NAME="output" PATH="/pages/protected/user/done.xhtml"
+    TARGET="rules:#pages#protected#user#done.xhtml" TITLE="done" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#protected#user#shoppingCartEmpty.xhtml"
+  PATH="/pages/protected/user/shoppingCartEmpty.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#protected#user#done.xhtml"
+  PATH="/pages/protected/user/done.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#menuType.xhtml"
+  PATH="/pages/public/menuType.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#login.xhtml"
+  PATH="/pages/public/login.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#dish.xhtml"
+  PATH="/pages/public/dish.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#menuDish.xhtml"
+  PATH="/pages/public/menuDish.xhtml" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#public#news.xhtml"
+  PATH="/pages/public/news.xhtml" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+    <h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h:messages />
+		
+		<h3>#{msgs.userUpdateHeader}: #{userBean.user.email}?</h3>
+        <h:inputHidden value="#{userBean.user.id}" />
+        <h:panelGrid columns="2" styleClass="panelGrid" rowClasses="panelFirstLine,panelNextLine" >
+            <h:outputLabel for="userEmail" value="#{msgs.userEmail}" />
+            <h:inputText id="userEmail" value="#{userBean.user.email}" required="true" requiredMessage="#{msgs.userEmailRequired}" />
+ 			<h:outputLabel for="userPassword" value="#{msgs.userPassword}" />
+			<h:inputSecret id="userPassword"  value="#{userBean.user.password}" required="true" requiredMessage="#{msgs.userPasswordRequired}" />
+			<h:outputLabel for="userFirstname" value="#{msgs.userFirstname}" />
+			<h:inputText id="userFirstname" value="#{userBean.user.firstname}"/>
+			<h:outputLabel for="userLastname" value="#{msgs.userLastname}" />
+			<h:inputText id="userLastname" value="#{userBean.user.lastname}"/>
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:commandButton action="#{userBean.updateUserEnd()}" value="#{msgs.update}" />
+            <h:commandButton action="#{userBean.listAllUsers()}" value="#{msgs.cancel}" immediate="true" />
+        </h:panelGrid>
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

@@ -1,0 +1,62 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<!-- Highlights Wrapper -->
+		<div class="wrapper wrapper-style3">
+			<div class="title">#{dishBean.dishType.title}</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Highlights -->
+						<div id="highlights">
+							<div>
+								<section class="highlight highlight-three">
+									<p:dataGrid var="dish" value="#{dishBean.allDishsByType}"
+										columns="3" rows="12" paginator="true"
+										paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+										rowsPerPageTemplate="9,12,15">
+
+										<p:panel style="text-align:center">
+											<h:panelGrid columns="1">
+												<p:graphicImage value="#{dishImageBean.image}" width="150"
+													height="150" styleClass="image">
+													<f:param name="id" value="#{dish.id}" />
+												</p:graphicImage>
+												<h3>#{dish.title}</h3>
+												<h:form>
+													<h:commandButton action="#{dishBean.openDish()}"
+														value="#{msgs.show}" styleClass="btn button-style1">
+														<f:setPropertyActionListener target="#{dishBean.dish}"
+															value="#{dish}"></f:setPropertyActionListener>
+													</h:commandButton>
+													<h:commandButton rendered="#{request.isUserInRole('user')}"
+														action="#{shoppingCartMB.addDish()}" value="Buy"
+														styleClass="btn button-style1">
+														<f:setPropertyActionListener
+															target="#{shoppingCartMB.dish}" value="#{dish}"></f:setPropertyActionListener>
+														<f:setPropertyActionListener
+															target="#{shoppingCartMB.user}" value="#{authBean.user}"></f:setPropertyActionListener>
+													</h:commandButton>
+												</h:form>
+											</h:panelGrid>
+										</p:panel>
+
+									</p:dataGrid>
+
+								</section>
+
+							</div>
+						</div>
+						<!-- /Highlights -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Highlights Wrapper -->
+	</ui:define>
+</ui:composition>

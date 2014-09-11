@@ -1,0 +1,80 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+	
+	<!-- Intro Wrapper -->
+			<div id="intro-wrapper" class="wrapper wrapper-style1">
+				<div class="title">cart</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							
+							<!-- Intro -->
+								<section id="intro">
+								
+									<p class="style1">#{msgs.loginHello}: #{authBean.user.firstname} #{authBean.user.lastname}</p>
+								
+									<h:form>
+									<h:messages />
+									
+									<div class="table-bordered">
+									<h:dataTable value="#{shoppingCartMB.cart}" var="item" styleClass="table panel-heading">
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="#{msgs.dishTitle}"/>
+											</f:facet>
+											<p:graphicImage value="#{dishImageBean.image}"
+													width="50" height="50">
+												<f:param name="id" value="#{item.key.id}" />
+											</p:graphicImage>
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.dishTitle}
+											</f:facet>
+											#{item.key.title}
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.dishPrice}
+											</f:facet>
+											#{item.key.price}
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.orderAmount}
+											</f:facet>
+											#{item.value}
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.action}
+											</f:facet>
+											<h:commandButton action="#{shoppingCartMB.delDish()}" value="#{msgs.delete}" styleClass="btn btn-default">
+												<f:setPropertyActionListener target="#{shoppingCartMB.dish}" value="#{item.key}">
+												</f:setPropertyActionListener>
+											</h:commandButton>
+										</h:column>
+									</h:dataTable>
+									</div>
+									<br/>
+										<h:commandButton action="#{shoppingCartMB.createOrderStart()}" value="#{msgs.checkout}" styleClass="button button-style3 button-big">
+										</h:commandButton>
+										<h:commandButton action="#{shoppingCartMB.clearCart()}" value="#{msgs.clear}" styleClass="button button-style1">
+										</h:commandButton>
+									</h:form>
+								</section>
+							<!-- /Intro -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Intro Wrapper -->
+	
+	</ui:define>
+</ui:composition>

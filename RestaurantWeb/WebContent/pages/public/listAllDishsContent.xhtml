@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h3>#{msgs.loginHello}: #{userMB.user.firstname} #{userMB.user.lastname} || <h:commandLink action="#{userMB.logOut()}" value="#{msgs.logout}" /> </h3>
+		
+		<h:messages />
+		<h:dataTable id="DishTable" value="#{dishBean.allDishs}" var="dish" 
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishTitle}
+				</f:facet>
+				#{dish.title}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishDesc}
+				</f:facet>
+				#{dish.description}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishSize}
+				</f:facet>
+				#{dish.size}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishPrice}
+				</f:facet>
+				#{dish.price}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishImage}
+				</f:facet>
+<!-- 				#{ingredient.images} -->
+<!-- 				<h:graphicImage value="#{ingredient.images}" /> -->
+				<p:graphicImage value="#{dishImageBean.image}" width="150" height="150">
+					<f:param name="id" value="#{dish.id}" />
+				</p:graphicImage>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ingredients</f:facet>
+    			<h:dataTable
+					value="#{dishBean.getIngredients(dish.ingredients)}" var="i"
+					styleClass="table" headerClass="tableColumnsHeader"
+					rowClasses="tableFirstLine,tableNextLine">
+					<h:column>
+						#{i.title}
+						</h:column>
+					<h:column>
+						#{i.description}
+					</h:column>
+					<h:column>
+						<p:graphicImage value="#{ingredientImageBean.image}" width="50"
+							height="50">
+							<f:param name="id" value="#{i.id}" />
+						</p:graphicImage>
+					</h:column>
+				</h:dataTable>
+			</h:column>
+			<h:column>
+				<f:facet name="header">DishTypes</f:facet>
+    			<h:dataTable
+					value="#{dishBean.getDishTypes(dish.dishtypes)}" var="t"
+					styleClass="table" headerClass="tableColumnsHeader"
+					rowClasses="tableFirstLine,tableNextLine">
+					<h:column>
+						#{t.title}
+					</h:column>
+					<h:column>
+						#{t.description}
+					</h:column>
+					<h:column>
+						<p:graphicImage value="#{dishTypeImageBean.image}" width="50"
+							height="50">
+							<f:param name="id" value="#{t.id}" />
+						</p:graphicImage>
+					</h:column>
+				</h:dataTable>
+			</h:column>
+			
+
+
+			<h:column>
+				<h:panelGrid columns="2">
+					
+					<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.updateDishStart()}" value="#{msgs.update}" >
+						<f:setPropertyActionListener target="#{dishBean.dish}" value="#{dish}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.deleteDishStart()}" value="#{msgs.delete}" >
+						<f:setPropertyActionListener target="#{dishBean.dish}" value="#{dish}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:commandButton rendered="#{request.isUserInRole('user')}" action="#{shoppingCartMB.addDish()}" value="Buy**" >
+						<f:setPropertyActionListener target="#{shoppingCartMB.dish}" value="#{dish}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener target="#{shoppingCartMB.user}" value="#{userMB.user}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:inputHidden value="#{dish.id}" />
+				</h:panelGrid>
+			</h:column>
+		</h:dataTable>
+		<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishBean.createDishStart()}" value="#{msgs.create}" >
+		</h:commandButton>
+		
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

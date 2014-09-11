@@ -1,0 +1,104 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+
+		<!-- Intro Wrapper -->
+		<div id="intro-wrapper" class="wrapper wrapper-style1">
+			<div class="title">#{msgs.orderUpdateHeader}: #{orderBean.order.id}?</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+					
+						<!-- Intro -->
+						<h:form>
+							<h:messages />
+
+							<div class="table-bordered">
+							
+								<h:inputHidden value="#{orderBean.order.id}" />
+								<h:panelGrid columns="2" styleClass="table panel-heading" columnClasses="col-xs-4, columnClass2">
+								
+									<h:outputLabel for="orderId" value="#{msgs.orderId}" />
+									<h:outputText id="orderId" value="#{orderBean.order.id}" />
+									
+									<h:outputLabel for="orderUser" value="#{msgs.userFirstname} #{msgs.userLastname}" />
+									<h:outputText id="orderUser" value="#{orderBean.order.user.firstname} #{orderBean.order.user.lastname}" />
+									
+									<h:outputLabel for="orderStatus" value="#{msgs.status}" />
+									<h:selectOneMenu id="orderStatus" value="#{orderBean.order.status}">
+							   			<f:selectItems value="#{helpMB.status}" />
+							   		</h:selectOneMenu>
+									
+									<h:outputLabel for="orderPlace" value="#{msgs.orderPlace}" />
+									<h:inputText id="orderPlace" value="#{orderBean.order.place}" styleClass="form-control"/>
+									
+									<h:outputLabel for="orderTime" value="#{msgs.orderTime}" />
+									<h:outputText id="orderTime" value="#{orderBean.order.time}" />
+									
+									<h:outputLabel for="orderOrdertime" value="#{msgs.orderOrdertime}" />
+									<p:calendar id="orderOrdertime" value="#{orderBean.order.ordertime}" pattern="MM/dd/yyyy HH:mm" />  
+									
+								</h:panelGrid>
+								
+								<div id="intro">
+								<p:dataTable id="dataTable" value="#{orderBean.order.orderItems.toArray()}" var="item"  paginator="true" rows="10"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15">
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.dishTitle}" />
+										</f:facet>
+										<h:outputText value="#{item.dish.title}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.dishPrice}" />
+										</f:facet>
+										<h:outputText value="#{item.price}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.orderAmount}" />
+										</f:facet>
+										<h:outputText value="#{item.amount}" />
+									</p:column>
+									<p:column>
+										<f:facet name="header">
+											<h:outputText value="#{msgs.delete}" />
+										</f:facet>
+										<h:commandButton action="#{orderBean.deleteOrderItem(item)}" value="#{msgs.delete}" styleClass="btn btn-default">
+											<f:ajax render="dataTable"></f:ajax>
+										</h:commandButton>
+									</p:column>
+								</p:dataTable>
+								</div>
+								
+								<h:outputLabel for="orderComment" value="#{msgs.orderComment}" />
+								<h:inputTextarea id="orderComment" value="#{orderBean.order.comment}" styleClass="form-control"/>
+								
+							</div>
+							<h:commandButton action="#{orderBean.updateOrderEnd()}"
+										value="#{msgs.update}" styleClass="btn button-style3">
+										</h:commandButton>
+							<h:link value="#{msgs.cancel}" outcome="listAllOrdersForALL" styleClass="btn button-style3"/>
+							
+						</h:form>
+						
+						
+						<!-- /Intro -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Intro Wrapper -->
+
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h3>#{msgs.loginHello}: #{userMB.user.firstname} #{userMB.user.lastname} || <h:commandLink action="#{userMB.logOut()}" value="#{msgs.logout}" /> </h3>
+		
+		
+		<h:messages />
+		<h:dataTable value="#{ingredientBean.allIngredients}" var="ingredient" 
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.ingredientTitle}
+				</f:facet>
+				#{ingredient.title}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.ingredientDesc}
+				</f:facet>
+				#{ingredient.description}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.ingredientImage}
+				</f:facet>
+<!-- 				#{ingredient.images} -->
+<!-- 				<h:graphicImage value="#{ingredient.images}" /> -->
+				<p:graphicImage value="#{ingredientImageBean.image}" width="150" height="150">
+					<f:param name="id" value="#{ingredient.id}" />
+				</p:graphicImage>
+			</h:column>
+			<h:column>
+				<h:panelGrid columns="2">
+					
+					<h:commandButton action="#{ingredientBean.updateIngredientStart()}" value="#{msgs.update}" >
+						<f:setPropertyActionListener target="#{ingredientBean.ingredient}" value="#{ingredient}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:commandButton action="#{ingredientBean.deleteIngredientStart()}" value="#{msgs.delete}" >
+						<f:setPropertyActionListener target="#{ingredientBean.ingredient}" value="#{ingredient}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:inputHidden value="#{ingredient.id}" />
+				</h:panelGrid>
+			</h:column>
+		</h:dataTable>
+		<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{ingredientBean.createIngredientStart()}" value="#{msgs.create}" >
+		</h:commandButton>
+		
+		
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

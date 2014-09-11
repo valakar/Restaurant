@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/pages=UTF-8
+encoding//WebContent/pages/protected/admin=UTF-8
+encoding//WebContent/pages/protected/admin/createDish.xhtml=UTF-8
+encoding//WebContent/pages/protected/admin/createDishType.xhtml=UTF-8
+encoding//WebContent/pages/protected/admin/updateDish.xhtml=UTF-8
+encoding//WebContent/pages/protected/user/listAllOrders.xhtml=UTF-8
+encoding//WebContent/pages/protected/user/shoppingCartEmpty.xhtml=UTF-8
+encoding//WebContent/pages/protected/user/showOrder.xhtml=UTF-8
+encoding//WebContent/pages/public/menuDish.xhtml=UTF-8
+encoding//WebContent/pages/public/menuIngr.xhtml=UTF-8
+encoding//WebContent/pages/public/menuType.xhtml=UTF-8
+encoding//WebContent/pages/public/news.xhtml=UTF-8
+encoding//src/org/com/restaurant/common/DishTypeBean.java=UTF-8
+encoding//src/resource/messages_ru.properties=UTF-8
+encoding/WebContent=UTF-8

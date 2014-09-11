@@ -1,0 +1,94 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:define name="content">
+		<!-- Intro Wrapper -->
+			<div class="wrapper wrapper-style1">
+				<div class="title">ваш заказ №#{orderBean.order.id}</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							
+							<!-- Highlights -->
+								<div id="intro">
+									
+									<h:form>
+										
+										<h:messages />
+										
+										<div class="table-bordered">
+
+										<h:panelGrid columns="2" styleClass="panelGrid"
+											rowClasses="panelFirstLine, panelNextLine">
+	
+											<h:outputLabel for="orderId" value="#{msgs.orderId}" />
+											<h:outputText id="orderId" value="#{orderBean.order.id}" />
+	
+											<h:outputLabel for="orderPlace" value="#{msgs.orderPlace}" />
+											<h:outputText id="orderPlace" value="#{orderBean.order.place}" />
+	
+											<h:outputLabel for="orderTime" value="#{msgs.orderTime}" />
+											<h:outputText id="orderTime" value="#{orderBean.order.time}" />
+	
+											<h:outputLabel for="orderOrdertime"
+												value="#{msgs.orderOrdertime}" />
+											<h:outputText id="orderOrdertime"
+												value="#{orderBean.order.ordertime}" />
+												
+											<h:outputLabel for="orderSummary" value="#{msgs.orderSummary}" />
+											<h:outputText id="orderSummary" value="#{orderBean.order.summary}" />
+	
+	
+										</h:panelGrid>
+										<h:dataTable value="#{orderBean.orderItemsAsList()}" var="item"
+											styleClass="table">
+											<h:column>
+											<f:facet name="header">
+												<h:outputText value="#{msgs.dishTitle}"/>
+											</f:facet>
+											<p:graphicImage value="#{dishImageBean.image}"
+													width="50" height="50">
+												<f:param name="id" value="#{item.dish.id}" />
+											</p:graphicImage>
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.dishTitle}
+											</f:facet>
+											#{item.dish.title}
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.dishPrice}
+											</f:facet>
+											#{item.price}
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												#{msgs.orderAmount}
+											</f:facet>
+											#{item.amount}
+										</h:column>
+									</h:dataTable>
+									<h:panelGrid columns="1" styleClass="panelGrid"
+											rowClasses="panelFirstLine, panelNextLine">
+										<h:outputLabel for="orderComment" value="#{msgs.orderComment}" />
+										<h:outputText id="orderComment"
+												value="#{orderBean.order.comment}" />
+									</h:panelGrid>
+								</div>
+										
+									</h:form>
+									
+								</div>
+							<!-- /Highlights -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Highlights Wrapper -->
+		</ui:define>
+		</ui:composition>

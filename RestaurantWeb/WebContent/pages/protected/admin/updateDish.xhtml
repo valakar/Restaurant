@@ -1,0 +1,91 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+
+		<!-- Intro Wrapper -->
+		<div id="intro-wrapper" class="wrapper wrapper-style1">
+			<div class="title">#{msgs.dishUpdateHeader}: #{dishBean.dish.title}?</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Intro -->
+						<h:form>
+							<h:messages />
+
+							<div class="table-bordered">
+							
+								<h:inputHidden value="#{dishBean.dish.id}" />
+						        <h:panelGrid columns="2" styleClass="table panel-heading" columnClasses="col-xs-4, columnClass2">
+						            <h:outputLabel for="dishTitle" value="#{msgs.dishTitle}" />
+									<h:inputText id="dishTitle"
+										value="#{dishBean.dish.title}" required="true"
+										requiredMessage="#{msgs.dishTitleRequired}" styleClass="form-control"/>
+									<h:outputLabel for="dishDesc" value="#{msgs.dishDesc}" />
+									<h:inputTextarea id="dishDesc"
+										value="#{dishBean.dish.description}" />
+									<h:outputLabel for="dishSize" value="#{msgs.dishSize}" />
+									<h:inputText id="dishSize"
+										value="#{dishBean.dish.size}" styleClass="form-control"/>
+									<h:outputLabel for="dishPrice" value="#{msgs.dishPrice}" />
+									<h:inputText id="dishPrice"
+										value="#{dishBean.dish.price}" styleClass="form-control"/>
+									<h:outputLabel for="dishImage" value="#{msgs.dishImage}" />
+									<p:fileUpload id="dishImage"
+										fileUploadListener="#{dishBean.handleFileUpload}"
+										mode="advanced" update="messages" label="Choose a file" auto="true"
+										sizeLimit="65760" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+										invalidSizeMessage="The maximum file size allowed is 65 KBs !"
+										invalidFileMessage="You are allowed to upload only images !"
+										value="#{dishBean.dish.images}">
+									</p:fileUpload>
+									<br/>
+									<p:graphicImage value="#{dishImageBean.image}" width="150" height="150" styleClass="image">
+											<f:param name="id" value="#{dishBean.dish.id}" />
+										</p:graphicImage>
+										
+									<h:outputLabel for="dishIngredients" value="#{msgs.dishIngredients}" />
+									<h:selectManyListbox id="dishIngredients" value="#{dishBean.dish.ingredients}" 
+										converter="#{IngredientConverter}">
+										<f:selectItems value="#{ingredientBean.allIngredients}" var="f" 
+											itemLabel="#{f.title}" itemValue="#{f}" >
+										</f:selectItems>
+										<f:attribute name="collectionType" value="java.util.HashSet" />
+									</h:selectManyListbox>
+									
+									<h:outputLabel for="dishTypes" value="#{msgs.dishTypes}" />
+									<h:selectManyListbox id="dishTypes" value="#{dishBean.dish.dishtypes}"
+										converter="#{DishTypeConverter}">
+										<f:selectItems value="#{dishTypeBean.allDishTypes}" var="t" 
+											itemLabel="#{t.title}" itemValue="#{t}" >
+										</f:selectItems>
+										<f:attribute name="collectionType" value="java.util.HashSet" />
+									</h:selectManyListbox>
+									
+									<p:growl id="messages" showDetail="true" life="5000" />
+						        </h:panelGrid>
+								
+								
+								
+							</div>
+							<h:commandButton action="#{dishBean.updateDishEnd()}"
+										value="#{msgs.update}" styleClass="btn button-style3"/>
+							<h:link value="#{msgs.cancel}" outcome="listAllDishs" styleClass="btn button-style3"/>
+							
+						</h:form>
+						<!-- /Intro -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Intro Wrapper -->
+
+
+	</ui:define>
+</ui:composition>

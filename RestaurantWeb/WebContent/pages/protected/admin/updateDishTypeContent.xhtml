@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">  
+
+<h:head>
+    <h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h:messages />
+		
+		<h3>#{msgs.dishTypeUpdateHeader}: #{dishTypeBean.dishType.title}?</h3>
+        <h:inputHidden value="#{dishTypeBean.dishType.id}" />
+        <h:panelGrid columns="2" styleClass="panelGrid" rowClasses="panelFirstLine,panelNextLine" >
+            <h:outputLabel for="dishTypeTitle" value="#{msgs.dishTypeTitle}" />
+			<h:inputText id="dishTypeTitle" value="#{dishTypeBean.dishType.title}" required="true" requiredMessage="#{msgs.dishTypeTitleRequired}" />
+			<h:outputLabel for="dishTypeDesc" value="#{msgs.dishTypeDesc}" />
+			<h:inputTextarea id="dishTypeDesc" value="#{dishTypeBean.dishType.description}" />
+			<h:outputLabel for="dishTypeImage" value="#{msgs.dishTypeImage}" />
+			<p:fileUpload id="dishTypeImage"
+				fileUploadListener="#{dishTypeBean.handleFileUpload}"
+				mode="advanced" update="messages" label="Choose a file" auto="true"
+				sizeLimit="65760" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+				invalidSizeMessage="The maximum file size allowed is 64 KBs !"
+				invalidFileMessage="You are allowed to upload only images !" value="#{dishTypeBean.dishType.images}"/>
+				<p:graphicImage value="#{dishTypeImageBean.image}" width="150" height="150">
+					<f:param name="id" value="#{dishTypeBean.dishType.id}" />
+				</p:graphicImage>
+			<p:growl id="messages" showDetail="true" life="5000"  />
+			<!-- 			<h:inputText id="ingredientImage" value="#{userBean.user.lastname}"/> -->
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:commandButton action="#{dishTypeBean.updateDishTypeEnd()}" value="#{msgs.update}" />
+            <h:commandButton action="#{dishTypeBean.listAllDishTypes()}" value="#{msgs.cancel}" immediate="true" />
+        </h:panelGrid>
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

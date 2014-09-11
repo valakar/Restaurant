@@ -1,0 +1,49 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+
+
+		<!-- Intro Wrapper -->
+		<div id="intro-wrapper" class="wrapper wrapper-style1">
+			<div class="title">Login</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+					
+						<!-- Intro -->
+						<section id="intro">
+							<div class="container">
+								<p:messages id="messages" showDetail="true" autoUpdate="true"
+									closable="true" globalOnly="true" />
+				
+								<h:form id="login" styleClass="form-signin">
+									<h:outputLabel for="email" value="Email: " />
+									<h:message styleClass="valid-msd" for="email" />
+									<p:inputText id="email" value="#{authBean.email}"
+										validatorMessage="#{msgs.loginUserName}" />
+
+									<h:outputLabel for="pass" value="Password: " />
+									<h:message styleClass="valid-msd" for="pass" />
+									<p:inputText id="pass" value="#{authBean.password}"
+										type="password" validatorMessage="#{msgs.loginPassword}" />
+
+									<h:commandButton update="@form" action="#{authBean.signin()}"
+										value="#{msgs.login}" styleClass="button button-style3 button-big" />
+								</h:form>
+							</div>
+						</section>
+						<!-- /Intro -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div></div>
+		<!-- /container -->
+
+	</ui:define>
+</ui:composition>

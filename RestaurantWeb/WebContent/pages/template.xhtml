@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>
+			<ui:insert name="page_header"> Hello World </ui:insert> 
+		</title>
+	</h:head>
+	<h:body>
+	
+	
+		<p:layout fullPage="true">  
+		  
+		    <p:layoutUnit position="north" size="auto"  collapsible="true" styleClass="cnavbar navbar-default">  
+			<h:form>
+				<p:growl id="messages"/>  
+				<p:menubar>  
+					<p:menuitem value="Главная" action="#{helpMB.main()}" /> 
+					<p:menuitem value="Новости" url="#" />
+					<p:menuitem value="Меню" action="#{helpMB.menu()}"  />   
+					<p:menuitem value="Контакты" url="#" /> 
+					
+					<f:facet name="options"> 
+						
+						<p:commandButton rendered="#{!userMB.checkUser()}" value="Авторизация" action="#{helpMB.login()}" />
+						<p:commandButton rendered="#{!userMB.checkUser()}" value="Регистрация" action="#{helpMB.registration()}" />
+						<p:commandButton rendered="#{userMB.checkUser()}" value="Корзина" action="#{helpMB.cart()}"/>
+						<p:commandButton rendered="#{userMB.checkUser()}" value="Выход" action="#{userMB.logOut()}"/>
+					 </f:facet>
+			    </p:menubar>  
+			</h:form>
+			<h:form>
+				<p:growl id="messages"/>  
+				<p:menubar rendered="#{request.isUserInRole('user')}">  
+					<p:menuitem value="Ваши заказы" action="#{helpMB.orders()}" /> 
+			    </p:menubar>  
+			    <p:menubar rendered="#{request.isUserInRole('admin')}">  
+					<p:menuitem value="Типы блюд" action="#{helpMB.dishtypes()}" />  
+					<p:menuitem value="Ингредиенты" action="#{helpMB.ingredients()}" /> 
+					<p:menuitem value="Заказы" action="#{helpMB.ordersAll()}" /> 
+					<p:menuitem value="Пользователи" action="#{helpMB.users()}" /> 
+			    </p:menubar>  
+			</h:form>
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="center">  
+		        <h:form>  
+		            <ui:insert name="content" /> 
+		        </h:form>  
+		    </p:layoutUnit>  
+		  
+		</p:layout>  
+	</h:body> 
+</html>

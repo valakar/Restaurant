@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css" />
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form enctype="multipart/form-data">
+		<h:messages />
+		
+		<h3>#{msgs.loginHello}: #{userMB.user.firstname} #{userMB.user.lastname} || <h:commandLink action="#{userMB.logOut()}" value="#{msgs.logout}" /> </h3>
+		
+		<h3>#{msgs.orderCreateHeader}</h3>
+
+		<h:panelGrid columns="2" styleClass="panelGrid"
+			rowClasses="panelFirstLine, panelNextLine">
+			
+			<h:outputLabel for="orderSummary" value="#{msgs.orderSummary}" />
+			<h:outputText id="orderSummary" value="#{shoppingCartMB.order.summary}" />
+			
+			<h:outputLabel for="orderPlace" value="#{msgs.orderPlace}" />
+			<h:inputText id="orderPlace"
+				value="#{shoppingCartMB.order.place}"/>
+				
+			<h:outputLabel for="orderTime" value="#{msgs.orderTime}" />
+			<p:calendar id="orderTime" value="#{shoppingCartMB.order.time}" pattern="MM/dd/yyyy HH:mm" />  
+			 
+				
+			<h:outputLabel for="orderComment" value="#{msgs.orderComment}" />
+			<h:inputTextarea id="orderComment"
+				value="#{shoppingCartMB.order.comment}" />
+				
+		</h:panelGrid>
+		<h:panelGrid columns="2">
+			<h:commandButton action="#{shoppingCartMB.checkout()}"
+				value="#{msgs.checkout}" />
+<!-- 			<h:commandButton action="#{dishBean.listAllDishs()}" -->
+<!-- 				value="#{msgs.cancel}" immediate="true" /> -->
+		</h:panelGrid>
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

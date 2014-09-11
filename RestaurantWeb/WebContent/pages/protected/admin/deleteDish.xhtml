@@ -1,0 +1,37 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+
+		<!-- Intro Wrapper -->
+		<div id="intro-wrapper" class="wrapper wrapper-style1">
+			<div class="title">#{msgs.dishDeleteHeader}: #{dishBean.dish.title}?</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+
+						<!-- Intro -->
+						<h:form>
+							<h:messages />
+							
+							<div align="center">
+								<h:inputHidden value="#{dishBean.dish.id}" />
+								<h:commandButton action="#{dishBean.deleteDishEnd()}" value="#{msgs.delete}" styleClass="button button-style3"/>
+								<h:link value="#{msgs.cancel}" outcome="listAllDishs" styleClass="button button-style3"/>
+							</div>
+						</h:form>
+						<!-- /Intro -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Intro Wrapper -->
+
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h3></h3>
+		
+		<h:messages />
+		<h:dataTable value="#{userBean.allUsers}" var="user" 
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.userEmail}
+				</f:facet>
+				#{user.email}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.userFirstname}
+				</f:facet>
+				#{user.firstname}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.userLastname}
+				</f:facet>
+				#{user.lastname}
+			</h:column>
+			<h:column>
+				<h:panelGrid columns="2">
+					
+					<h:commandButton action="#{userBean.updateUserStart()}" value="#{msgs.update}" >
+						<f:setPropertyActionListener target="#{userBean.user}" value="#{user}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:commandButton action="#{userBean.deleteUserStart()}" value="#{msgs.delete}" >
+						<f:setPropertyActionListener target="#{userBean.user}" value="#{user}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:inputHidden value="#{user.id}" />
+				</h:panelGrid>
+			</h:column>
+		</h:dataTable>
+		
+		
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

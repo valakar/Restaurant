@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	lang="ru"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<f:view locale="#{language.localeCode}">
+<h:head>
+	<title>Restaurant</title>
+	<meta http-equiv="content-type" content="text/javascript; charset=UTF-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link
+		href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900"
+		rel="stylesheet" />
+	<h:outputScript name="js/jquery.min.js" ></h:outputScript>
+	<h:outputScript name="js/jquery.dropotron.min.js" />
+	<h:outputScript name="js/config.js" />
+	<h:outputScript name="js/skel.min.js" />
+	<h:outputScript name="js/skel-panels.min.js" />
+	<noscript>
+		<h:outputStylesheet name="css/main.css" />
+		<h:outputStylesheet name="css/skel-noscript.css" />
+		<h:outputStylesheet name="css/style.css" />
+		<h:outputStylesheet name="css/style-desktop.css" />
+		<h:outputStylesheet name="css/bootstrap/bootstrap.css" />
+	</noscript>
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+</h:head>
+<h:body styleClass="no-sidebar">
+		<!-- Header Wrapper -->
+			<div id="header-wrapper" class="wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							<!-- Header -->
+								<div id="header">
+									
+									<!-- Logo -->
+										<div id="logo">
+											<h1><a href="#">Restaurant</a></h1>
+											<span class="byline">Best ukrainian restaurant in Kiev</span>
+										</div>
+									<!-- /Logo -->
+									
+									<!-- Nav -->
+										<nav id="nav">
+											<ul>
+												<li class="current_page_item"><h:link value="#{msgs.indexMain}" outcome="index"/></li>
+												<li>
+													<span>#{msgs.indexMenu}</span>
+													<ul>	
+														<li><h:link value="#{msgs.indexByIngredient}" outcome="menuIngr" /></li>
+														<li><h:link value="#{msgs.indexByType}" outcome="menu" /></li>
+													</ul>
+												</li>
+												<li><h:link value="#{msgs.indexNews}" outcome="news" /></li>
+												<li><a href="#footer">#{msgs.indexContacts}</a></li>
+												<li/>
+												<li>
+													<span>#{msgs.indexAccount}</span>
+													<ul>	
+														<li><h:link rendered="#{!authBean.checkUser()}" value="#{msgs.indexAuth}" outcome="login" /></li>
+														
+														<li><h:link rendered="#{!authBean.checkUser()}" value="#{msgs.indexReg}" outcome="createUser" /></li>
+														<li><h:link rendered="#{request.isUserInRole('user')}" value="#{msgs.indexCart}" outcome="shoppingCart" /></li>
+														<li><h:link rendered="#{request.isUserInRole('user')}" value="#{msgs.indexOrders}" outcome="listAllOrders" /></li>
+														<li><h:form><h:commandLink rendered="#{request.isUserInRole('user')}" value="#{msgs.indexPref}" action="#{userBean.updateUserStart()}" >
+															<f:setPropertyActionListener target="#{userBean.user}" value="#{authBean.user}" />
+														</h:commandLink></h:form></li>
+														<li><h:form><h:commandLink rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexNewDishType}" action="#{dishTypeBean.createDishTypeStart()}" /></h:form></li>
+														<li><h:form><h:commandLink rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexNewIngr}" action="#{ingredientBean.createIngredientStart()}" /></h:form></li>
+														<li><h:form><h:commandLink rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexNewDish}" action="#{dishBean.createDishStart()}" /></h:form></li>
+														<li><h:form><h:commandLink rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexNewUser}" action="#{userBean.createUserStart()}" /></h:form></li>
+														<li><h:link rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexDishs}" outcome="listAllDishs" /></li>
+														<li><h:link rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexOrders}" outcome="listAllOrdersForALL" /></li>
+														<li><h:link rendered="#{request.isUserInRole('admin')}" value="#{msgs.indexUsers}" outcome="listAllUsers" /></li>
+														<li><h:form><h:commandLink rendered="#{authBean.checkUser()}" value="#{msgs.indexLogOut}" action="#{authBean.logOut()}" /></h:form></li>
+														
+													</ul>
+												</li>
+												<li>
+													<span>#{msgs.indexLang}</span>
+													<ul>	
+														<li><h:form><h:commandLink value="English" action="#{language.countryLocaleCodeChanged()}" >
+															<f:setPropertyActionListener target="#{language.localeCode}"
+													value="English"></f:setPropertyActionListener>
+														</h:commandLink></h:form></li>
+														<li><h:form><h:commandLink value="Russian" action="#{language.countryLocaleCodeChanged()}" >
+															<f:setPropertyActionListener target="#{language.localeCode}"
+													value="Russian"></f:setPropertyActionListener>
+														</h:commandLink></h:form></li>
+													</ul>
+												</li>
+											</ul>
+										</nav>
+									<!-- /Nav -->
+
+								</div>
+							<!-- /Header -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Header Wrapper -->
+
+		<ui:insert name="content" /> 
+
+		<!-- Footer Wrapper -->
+			<div id="footer-wrapper" class="wrapper">
+				<div class="title">#{msgs.indexContacts}</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+
+							<!-- Footer -->
+								<div id="footer">
+									<header class="style1">
+										<h2>#{msgs.indexContactText}</h2>
+									</header>
+									<hr />
+									<div>
+										<div class="row">
+											<div class="6u">
+
+												<!-- Contact Form -->
+													<section class="footer-one">
+														<form method="post" action="#">
+															<div>
+																<div class="row half">
+																	<div class="6u">
+																		<input type="text" class="text" name="name" id="contact-name" placeholder="Name" />
+																	</div>
+																	<div class="6u">
+																		<input type="text" class="text" name="name" id="contact-email" placeholder="Email" />
+																	</div>
+																</div>
+																<div class="row half">
+																	<div class="12u">
+																		<textarea name="message" id="contact-message" placeholder="Message"></textarea>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="12u">
+																		<ul class="actions">
+																			<li><input type="submit" class="button button-style1" value="Send" /></li>
+																			<li><input type="reset" class="button button-style2" value="Reset" /></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</form>
+													</section>
+												<!-- /Contact Form -->
+
+											</div>
+											<div class="6u">
+											
+												<!-- Contacts -->
+													<section class="footer-two">
+														<div class="feature-list feature-list-small">
+															<div>
+																<div class="row">
+																	<div class="6u">
+																		<section>
+																			<h3 class="fa fa-home">Mailing Address</h3>
+																			<p>
+																				Untitled Corporation<br />
+																				1234 Somewhere Rd #987<br />
+																				Nashville, TN 00000-0000
+																			</p>
+																		</section>
+																	</div>
+																	<div class="6u">
+																		<section>
+																			<h3 class="fa fa-comment">Social</h3>
+																			<p>
+																				<a href="http://twitter.com/n33co">@n33co</a><br />
+																				<a href="http://dribbble.com/n33">dribbble.com/n33</a><br />
+																				<a href="#">facebook.com/untitled</a>
+																			</p>
+																		</section>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="6u">
+																		<section>
+																			<h3 class="fa fa-envelope">Email</h3>
+																			<p>
+																				<a href="#">info@untitled.tld</a>
+																			</p>
+																		</section>
+																	</div>
+																	<div class="6u">
+																		<section>
+																			<h3 class="fa fa-phone">Phone</h3>
+																			<p>
+																				(000) 555-0000
+																			</p>
+																		</section>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												<!-- /Contacts -->
+													
+											</div>
+										</div>
+									</div>
+									<hr />
+								</div>
+							<!-- /Footer -->
+
+							<!-- Copyright -->
+								<div id="copyright">
+									<span>
+										&copy; Untitled. Demo Images by <a href="http://ineedchemicalx.deviantart.com/">Felicia Simion</a>. Design by <a href="http://html5up.net/">HTML5 UP</a>.
+									</span>
+								</div>
+							<!-- /Copyright -->
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Footer Wrapper -->
+</h:body>
+</f:view>
+</html>

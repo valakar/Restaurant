@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h:messages />
+		<h:dataTable id="OrderTable" value="#{orderBean.allOrders}" var="order" 
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderId}
+				</f:facet>
+				#{order.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderTime}
+				</f:facet>
+				<h:outputText value="#{order.time}"  >
+					<f:convertDateTime pattern="MM/dd/yyyy HH:mm" /> 
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderOrdertime}
+				</f:facet>
+				<h:outputText value="#{order.ordertime}"  >
+					<f:convertDateTime pattern="MM/dd/yyyy HH:mm" /> 
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderSummary}
+				</f:facet>
+				#{order.summary}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.userLastname} #{msgs.userFirstname}
+				</f:facet>
+				#{order.user.lastname} #{order.user.firstname}
+			</h:column>
+			
+			
+			<h:column>
+				<h:panelGrid columns="2">
+					
+					<h:commandButton action="#{orderBean.updateOrderStart()}" value="#{msgs.update}" >
+						<f:setPropertyActionListener target="#{orderBean.order}" value="#{order}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:commandButton action="#{orderBean.showOrder()}" value="#{msgs.delete}" >
+						<f:setPropertyActionListener target="#{orderBean.order}" value="#{order}"></f:setPropertyActionListener>
+					</h:commandButton>
+					
+					<h:inputHidden value="#{order.id}" />
+				</h:panelGrid>
+			</h:column>
+		</h:dataTable>
+		
+	</h:form>
+	</ui:composition>
+</h:body> 
+</html>

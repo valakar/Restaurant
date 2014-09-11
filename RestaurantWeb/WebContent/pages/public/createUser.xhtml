@@ -1,0 +1,55 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+
+
+		<!-- Intro Wrapper -->
+		<div id="intro-wrapper" class="wrapper wrapper-style1">
+			<div class="title">#{msgs.userCreateHeader}</div>
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+					
+						<!-- Intro -->
+						<section id="intro">
+							<div class="container">
+								
+				
+								<h:form id="signup" styleClass="form-signin">
+								<p:messages  />
+										<h:outputLabel for="userEmail" value="#{msgs.userEmail}" />
+										<h:inputText id="userEmail" value="#{userBean.user.email}" required="true" requiredMessage="#{msgs.userEmailRequired}" styleClass="form-control"
+											validatorMessage="Invalid email format">
+											<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+										</h:inputText>
+										<h:outputLabel for="userPassword" value="#{msgs.userPassword}" />
+										<h:inputSecret id="userPassword"  value="#{userBean.user.password}" required="true" requiredMessage="#{msgs.userPasswordRequired}" class="form-control"/>
+										<h:outputLabel for="userPasswordAgain" value="#{msgs.userPasswordRepeat}" />
+										<h:inputSecret id="userPasswordAgain"  value="#{userBean.passAgain}" required="true" requiredMessage="#{msgs.userPasswordRequired}" class="form-control"/>
+										<h:outputLabel for="userFirstname" value="#{msgs.userFirstname}" />
+										<h:inputText id="userFirstname" value="#{userBean.user.firstname}" styleClass="form-control"/>
+										<h:outputLabel for="userLastname" value="#{msgs.userLastname}" />
+										<h:inputText id="userLastname" value="#{userBean.user.lastname}" styleClass="form-control"/>
+
+									<h:commandButton action="#{userBean.createUserEnd()}" value="#{msgs.create}" styleClass="btn button-style3"/>
+									<h:link value="#{msgs.cancel}" outcome="index" styleClass="btn button-style3"/>
+								</h:form>
+							</div>
+						</section>
+						<!-- /Intro -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div></div>
+		<!-- /container -->
+
+	</ui:define>
+</ui:composition>
+

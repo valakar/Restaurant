@@ -1,0 +1,59 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:define name="content">
+		<!-- Highlights Wrapper -->
+			<div class="wrapper wrapper-style3">
+				<div class="title">Меню</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							
+							<!-- Highlights -->
+								<div id="highlights">
+									<div>
+
+								<div class="row">
+
+									<ui:repeat var="dishType" value="#{dishTypeBean.allDishTypes}" >
+										<div class="4u">
+											<section class="highlight highlight-three">
+												<p:graphicImage value="#{dishTypeImageBean.image}"
+													width="200" height="200" styleClass="image">
+													<f:param name="id" value="#{dishType.id}" />
+												</p:graphicImage>
+												<h3>
+													<a href="#">#{dishType.title}</a>
+												</h3>
+												<h:form>
+													<h:commandButton rendered="#{ not request.isUserInRole('admin')}" action="#{dishBean.listAllDishs()}" value="#{msgs.show}" styleClass="button button-style1" >
+														<f:setPropertyActionListener target="#{dishBean.dishType}" value="#{dishType}"></f:setPropertyActionListener>
+													</h:commandButton>
+													<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishTypeBean.updateDishTypeStart()}" value="#{msgs.update}" styleClass="btn button-style1" >
+														<f:setPropertyActionListener target="#{dishTypeBean.dishType}" value="#{dishType}"></f:setPropertyActionListener>
+													</h:commandButton>
+														
+													<h:commandButton rendered="#{request.isUserInRole('admin')}" action="#{dishTypeBean.deleteDishTypeStart()}" value="#{msgs.delete}" styleClass="btn button-style1" >
+														<f:setPropertyActionListener target="#{dishTypeBean.dishType}" value="#{dishType}"></f:setPropertyActionListener>
+													</h:commandButton>
+												</h:form>
+											</section>
+										</div>
+									</ui:repeat>
+
+								</div>
+
+
+							</div>
+								</div>
+							<!-- /Highlights -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Highlights Wrapper -->
+		</ui:define>
+		</ui:composition>

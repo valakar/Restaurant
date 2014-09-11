@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="main.css"/>
+</h:head> 
+<h:body> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:form>
+		<h:messages />
+		
+		<h:panelGrid columns="2" styleClass="panelGrid"
+			rowClasses="panelFirstLine, panelNextLine">
+		
+			<h:outputLabel for="orderId" value="#{msgs.orderId}" />
+			<h:outputText id="orderId" value="#{orderBean.order.id}" />
+			
+			<h:outputLabel for="orderPlace" value="#{msgs.orderPlace}" />
+			<h:inputText id="orderPlace" value="#{orderBean.order.place}" />
+			
+			<h:outputLabel for="orderTime" value="#{msgs.orderTime}" />
+			<h:outputText id="orderTime" value="#{orderBean.order.time}" />
+			
+			<h:outputLabel for="orderOrdertime" value="#{msgs.orderOrdertime}" />
+			<p:calendar id="orderOrdertime" value="#{orderBean.order.ordertime}" pattern="MM/dd/yyyy HH:mm" />  
+			
+		</h:panelGrid>
+		<h:dataTable value="#{orderBean.orderItemsAsList()}" var="item" 
+		styleClass="table" 
+		headerClass="tableColumnsHeader" 
+		rowClasses="tableFirstLine,tableNextLine">
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishTitle}
+				</f:facet>
+				#{item}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.dishPrice}
+				</f:facet>
+				#{item.price}
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					#{msgs.orderAmount}
+				</f:facet>
+				#{item.amount}
+			</h:column>
+<!-- 			<h:column> -->
+<!-- 				<f:facet name="header"> -->
+<!-- 					#{msgs.delete} -->
+<!-- 				</f:facet> -->
+<!-- 				<h:commandButton action="#{orderBean.deleteOrderItem()}" value="#{msgs.delete}" > -->
+<!-- 					<f:setPropertyActionListener target="#{orderBean.orderItem}" value="#{item}"></f:setPropertyActionListener> -->
+<!-- 				</h:commandButton> -->
+<!-- 			</h:column> -->
+		</h:dataTable>
+		<h:panelGrid columns="2" styleClass="panelGrid"
+			rowClasses="panelFirstLine, panelNextLine">
+			<h:outputLabel for="orderComment" value="#{msgs.orderComment}" />
+			<h:inputText id="orderComment" value="#{orderBean.order.comment}" />
+			
+		</h:panelGrid>
+
+		
+		<h:commandButton action="#{orderBean.updateOrderEnd()}" value="#{msgs.update}" />
+		<h:commandButton action="#{orderBean.listAllOrders()}" value="#{msgs.cancel}" immediate="true" />
+       
+			
+
+	</h:form>
+	</ui:composition>
+</h:body>  
+</html>

@@ -1,0 +1,31 @@
+<ui:composition template="/pages/template2.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+	
+	<!-- Intro Wrapper -->
+			<div id="intro-wrapper" class="wrapper wrapper-style1">
+				<div class="title">cart</div>
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							
+							<!-- Intro -->
+								<section id="intro">
+								
+									<p class="style1">#{msgs.loginHello}: #{authBean.user.firstname} #{authBean.user.lastname}, your cart is empty!</p>
+								
+								</section>
+							<!-- /Intro -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /Intro Wrapper -->
+	
+	</ui:define>
+</ui:composition>
